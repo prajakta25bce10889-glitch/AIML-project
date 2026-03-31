@@ -1,6 +1,5 @@
 from sklearn.tree import DecisionTreeRegressor
 
-# Manually created dataset (sample values)
 # [PM2.5, PM10, NO2, CO, SO2]
 X = [
     [20, 50, 15, 0.5, 5],
@@ -11,14 +10,11 @@ X = [
     [120, 200, 65, 2.0, 15]
 ]
 
-# Corresponding AQI values
 y = [50, 80, 120, 160, 200, 250]
 
-# Train model
 model = DecisionTreeRegressor()
 model.fit(X, y)
 
-# User input
 print("\nEnter pollutant values:")
 pm25 = float(input("PM2.5: "))
 pm10 = float(input("PM10: "))
@@ -26,10 +22,8 @@ no2 = float(input("NO2: "))
 co = float(input("CO: "))
 so2 = float(input("SO2: "))
 
-# Prediction
 prediction = model.predict([[pm25, pm10, no2, co, so2]])
 
-# AQI Category
 def get_category(aqi):
     if aqi <= 50:
         return "Good"
@@ -40,7 +34,6 @@ def get_category(aqi):
     else:
         return "Very Unhealthy"
 
-# Output
 print("\n--- AQI Prediction Result ---")
 print("Predicted AQI:", round(prediction[0], 2))
 print("Category:", get_category(prediction[0]))
